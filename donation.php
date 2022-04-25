@@ -3,14 +3,10 @@
 session_start();
 require 'connection.php';
 $email = $_SESSION['email'];
-// $v_token = $_SESSION['v_token'];
 $query = "SELECT * FROM user WHERE email = '$email'";
 $results = mysqli_query($db, $query);
 $user_data_row = mysqli_fetch_assoc($results);
-// $isVerified = $user_data_row['verify'];
-// $update_address = $user_data_row['address'];
-// $update_phone = $user_data_row['phone'];
-// $update_fname = $user_data_row['fname'];
+
 
 
 if(!isset($_SESSION['email']))
@@ -19,25 +15,18 @@ if(!isset($_SESSION['email']))
 	header("location: index.php");
 }
 
-// $program_id = 999;
 
 if (isset($_GET['prog_id']))
 {
 	$program_id = (int)$_GET['prog_id'];
 	$_SESSION['prog_id'] = $program_id;
-	// echo("saad");
-	// print_r($program_id);
 	$fetch_program_det = "SELECT program_name, org_name FROM programs WHERE id = '$program_id'";
 	$result_fetch_pdet = mysqli_query($db, $fetch_program_det);
 	$fetch_pdet_row = mysqli_fetch_assoc($result_fetch_pdet);
 	$prog_name_don = $fetch_pdet_row['program_name'];
 	$org_name_don = $fetch_pdet_row['org_name'];
-	// echo($org_name_don);
 }
 
-
-// $prog_name_don = $_SESSION['program_name'];
-// $org_name_don = $_SESSION['org_name'];
 $amount_donated = 0;
 $user_id = $user_data_row['id'];
 
@@ -47,23 +36,10 @@ $program_id = $_SESSION['prog_id'];
 
 if (isset($_POST['donate_btn']))
 {
-	// echo("saad");
 	$error_file_upload = "";
-	// echo ("saad");
-	// $prog_name_don = mysqli_real_escape_string($db, $_POST['prog_name_don']);
-
-	// print_r($_FILES);
-
 	$amount_donated = (int)mysqli_real_escape_string($db, $_POST['amount_don']);
-	// echo($amount_donated);
-
-	// $fetch_program_id = "SELECT id FROM programs WHERE program_name = '$prog_name_don'";
-	// $result_fetch_pid = mysqli_query($db, $fetch_program_id);
-	// $fetch_pid_row = mysqli_fetch_assoc($result_fetch_pid);
-	// $program_id = $fetch_pid_row['id'];
 
 	$filename = basename($_FILES['receipt_file']['name']);
-	// echo ($filename);
 	$destination = 'receipts/'.$filename;
 	$extension = pathinfo($destination, PATHINFO_EXTENSION);
 
@@ -83,16 +59,10 @@ if (isset($_POST['donate_btn']))
         // move the uploaded (temporary) file to the specified destination
         if (move_uploaded_file($file, $destination)) 
         {
-        	// echo ("saad");
-        	// echo($amount_donated);
-        	// echo($user_id);
-        	// echo($program_id);
-        	// echo($filename);
             $donation_accept_query = "INSERT INTO donation (user_id, amount, program_id, receipt_file_name) VALUES ('$user_id', '$amount_donated', '$program_id', '$filename')";
 
             if (mysqli_query($db, $donation_accept_query)) 
             {
-            	// echo("saad");
                 $error_file_upload = "Successfully Donated. Waiting for review. You can check the status from donation history section.";
                 $donation_success = 1;
             }
@@ -113,7 +83,6 @@ if (isset($_POST['donate_btn']))
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<title>Donate</title>
 	<link rel="shortcut icon" href="img/EF8.png" type="image/x-icon">
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -137,9 +106,6 @@ if (isset($_POST['donate_btn']))
 
 				<li><a href="edit-profile.php"><span class="las la-user-circle"></span><span>Account</span></a>
 				</li>
-
-				<!-- <li><a href="#"><span class="las la-cog"></span><span>Settings</span></a>
-				</li> -->
 			</ul>
 			<button onclick="location.href='logout.php'" type="button" class="logout-btn"><span class="las la-sign-out-alt"></span><span>Logout</span></button>
 		</div>
@@ -179,7 +145,6 @@ if (isset($_POST['donate_btn']))
 				
 				<?php else: ?>
 					<div class="error">
-						<!-- <p>Successfully Donated. Waiting for review. You can check the status from donation history section.</p> -->
 						<p><?php echo($error_file_upload);  ?></p>
 					</div>
 				<?php endif ?>

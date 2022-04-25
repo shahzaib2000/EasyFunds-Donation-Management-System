@@ -53,22 +53,6 @@
 	text-align: center;
 }
 
-/*.save-btn
-{
-	background: var(--main-color);
-	border-radius: 10px;
-	color: #fff;
-	font-size: 0.8rem;
-	padding: .5rem 1rem;
-	border: 1px solid var(--main-color);
-	
-}
-
-.save-btn:hover
-{
-	background: var(--sec-color);
-	cursor: pointer;
-}*/
 
 .email-display input
 {

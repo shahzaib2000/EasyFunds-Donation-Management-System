@@ -2,10 +2,7 @@
 
 session_start();
 require 'connection.php';
-// $db = mysqli_connect('localhost', 'root', '', 'users') or die("could not connect to the database");
-// $db = mysqli_connect('db5003435648.hosting-data.io', 'dbu1173131', 'NewStartup123', 'dbs2787679') or die("could not connect to the database");     //for online ionos server
 $email = $_SESSION['email'];
-// $v_token = $_SESSION['v_token'];
 $query = "SELECT * FROM user WHERE email = '$email'";
 $results = mysqli_query($db, $query);
 $user_data_row = mysqli_fetch_assoc($results);
@@ -27,7 +24,6 @@ if(!isset($_SESSION['email']))
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<title>Donation History</title>
 	<link rel="shortcut icon" href="img/EF8.png" type="image/x-icon">
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -38,7 +34,6 @@ if(!isset($_SESSION['email']))
 	<input type="checkbox" id="nav-toggle">
 	<div class="sidebar">
 		<div class="sidebar-brand">
-			<!-- <h2><span class="las la-recycle"></span><span>MINT</span></h2> -->
 			<h2><span><img src="img/EF9.png"></span><span>EasyFunds</span></h2>
 		</div>
 
@@ -52,9 +47,6 @@ if(!isset($_SESSION['email']))
 
 				<li><a href="edit-profile.php"><span class="las la-user-circle"></span><span>Account</span></a>
 				</li>
-
-				<!-- <li><a href="#"><span class="las la-cog"></span><span>Settings</span></a>
-				</li> -->
 			</ul>
 			<button onclick="location.href='logout.php'" type="button" class="logout-btn"><span class="las la-sign-out-alt"></span><span>Logout</span></button>
 		</div>
@@ -98,16 +90,12 @@ if(!isset($_SESSION['email']))
 									</thead>
 									<tbody>
 										<?php  
-										// echo ($user_id);
-										// $history_query = "SELECT amount, program_id, deposit_date, status FROM donation WHERE user_id = '$user_id'";
 										$history_query = "SELECT amount, program_id, deposit_date, status FROM donation WHERE user_id = '$user_id' ORDER BY id DESC";
 										$result_history = mysqli_query($db, $history_query);
 										if (mysqli_num_rows($result_history) > 0)
 										{
-											// $counter_hist = 0;
 											while ($hist_row = mysqli_fetch_assoc($result_history))
 											{
-												// $counter_hist += 1;
 												$query_program_name = "SELECT program_name FROM programs where id = ".$hist_row['program_id']."";
 												$result_prog_name = mysqli_query($db, $query_program_name);
 												$prog_name_row = mysqli_fetch_assoc($result_prog_name);
@@ -138,16 +126,10 @@ if(!isset($_SESSION['email']))
 														<td><span class='status pink'></span>Declined</td>
 													  </tr>");
 												}
-												// echo ("<tr>
-												// 		<td>".$hist_row['amount']."</td>
-												// 		<td>".$prog_name_row['program_name']."</td>
-												// 		<td><span class='status purple'></span>".$hist_row['status']."</td>
-												// 	  </tr>");
 											}
 										}
 										else
 										{
-											// echo("No Donations Found");
 											echo ("<tr>
 														<td>No</td>
 														<td>Donations</td>

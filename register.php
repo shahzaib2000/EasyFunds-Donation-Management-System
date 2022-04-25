@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> -->
 	<title>Sign Up</title>
 	<link rel="shortcut icon" href="img/EF8.png" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="css/style2.css">
@@ -15,30 +14,19 @@
 </head>
 
 <body>
-	<!-- <input type="checkbox" id="nav-toggle"> -->
 	<div class="header">
 		<div class="header-logo">
-			<!-- <a href="index.html"><img id="logo-header" src="img/mint-logo4.png"></a> -->
 			<a href="index.php"><img id="logo-header" src="img/EF7.png"></a>
 		</div>
 		<div class="header-left" id="myTopnav">
-			<!-- <a href="https://mymintrewards.com/about.html" class="header-link">About Us</a>	
-			<a href="" class="header-link">Contact Us</a>
-			<a href="" class="header-link">News</a>
-			<a href="" class="header-link">Careers</a>
-			<a href="" class="header-link">Blogs</a> -->
 		</div>
 
 		<div class="header-right" id="myTopnav2">
-			<!-- <a href="https://login.mymintrewards.com/dashboard.php" class="header-link">Redeem Points</a> -->
 			<a href="register.php" class="header-link">Sign Up</a>
 			<a href="index.php" class="header-link">Sign In</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 		    <span id="bar-hamburger" class="las la-bars"></span>
 		  </a>
-			<!-- <label id="bar-hamburger" for="nav-toggle">
-					<span class="las la-bars"></span>
-			</label> -->
 		</div>
 	</div>
 
@@ -51,7 +39,6 @@
 			<div><h2 class="form-title">Sign Up</h1></div>
 			<form id="sign-up" class="input-group" action="register.php" method="post">   <!--register-->
 				<div class="error-msg" style="color:#dd4b39;"><?php include('errors_reg.php') ?></div>
-				<!-- <input type="text" class="input-field" name="username" placeholder="User Id" required> -->
 				<div class="input-reg">
 					<label for="fname"><b>Full Name:</b></label>
 					<input type="text" class="input-field" name="fname" placeholder="Enter Full Name" value="<?php echo $fname; ?>" required>
@@ -100,9 +87,6 @@
 				
 
 				<button type="submit" class="submit-btn" name="reg_user">Sign Up</button>
-				<!-- <div class="other-prompt">
-					<p>Already have an account? <a href="index.php" class="other-page">Login</a></p>
-				</div> -->
 			</form>
 		</div>
 	</div>
@@ -207,7 +191,6 @@
 				<li class="link_name">Services</li>
 				<li><a href="#">Donation Programs</a></li>
 				<li><a href="#">View Donation History</a></li>
-				<!-- <li><a href="#">Collect Reward</a></li> -->
 			
 			</ul>
 			<ul class="box">

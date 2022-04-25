@@ -12,12 +12,4 @@
 
    $db=mysqli_connect($hostName,$userName,$userPass,$dbName);
 
-   // $db = mysqli_connect('localhost', 'root', '', 'user_data') or die("could not connect to the database");
-
-   /*if(!$con){
-   	echo "connection failed";
-   }
-   else
-   	echo "connection succes";*/
-
 ?>

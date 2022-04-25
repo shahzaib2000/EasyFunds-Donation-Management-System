@@ -49,16 +49,6 @@ h2, label
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-/*.header a {
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 10px 12px;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 600;
-}*/
-
 
 .header-right a {
   float: right;
@@ -103,17 +93,6 @@ h2, label
   /*text-decoration: underline;*/
 }
 
-/*#nav-toggle
-{
-  display: none;
-}
-*/
-/*#bar-hamburger
-{
-  display: none;
-  font-size: 28px;
-  float: right;
-}*/
 
 
 #logo-header
@@ -126,12 +105,7 @@ h2, label
   /*vertical-align: center;*/
 }
 
-/*.header-right
-{
-  float: right;
 
-}
-*/
 .header-left
 {
   float: left;
@@ -170,10 +144,7 @@ h2, label
   background-repeat: no-repeat;
 }
 
-/*.hero div
-{
-  margin-top: 30px;
-}*/
+
 
 .heading-mint
 {

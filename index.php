@@ -16,19 +16,12 @@
 <body>
 	<div class="header">
 		<div class="header-logo">
-			<!-- <a href="index.html"><img id="logo-header" src="img/mint-logo4.png"></a> -->
-			<a href="index.php"><img id="logo-header" src="img/EF7.png"></a>	<!-- add easyfunds logo here -->
+			<a href="index.php"><img id="logo-header" src="img/EF7.png"></a>
 		</div>
 		<div class="header-left" id="myTopnav">
-			<!-- <a href="https://mymintrewards.com/about.html" class="header-link">About Us</a>	
-			<a href="" class="header-link">Contact Us</a>
-			<a href="" class="header-link">News</a>
-			<a href="" class="header-link">Careers</a>
-			<a href="" class="header-link">Blogs</a> -->
 		</div>
 
 		<div class="header-right" id="myTopnav2">
-			<!-- <a href="https://login.mymintrewards.com/dashboard.php" class="header-link">Redeem Points</a>  -->
 			<a href="register.php" class="header-link">Sign Up</a>
 			<a href="index.php" class="header-link">Sign In</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -53,12 +46,8 @@
 				<div class="password-input">
 					<label for="password1"><b>Password:</b></label>
 					<input type="password" class="input-field" name="password1" placeholder="Enter Password" required>
-					<!-- <input type="checkbox" class="check-box"><span>Remember me</span> -->	
 				</div>
 				<button type="submit" class="submit-btn" name="login_user">Login</button>
-				<!-- <div class="other-prompt">
-					<p>Need an account? <a href="register.php" class="other-page">Sign Up!</a></p>
-				</div> -->
 			</form>
 		</div>
 	</div>

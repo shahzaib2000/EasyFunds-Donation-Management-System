@@ -2,8 +2,6 @@
 
 session_start();
 require 'connection.php';
-// $db = mysqli_connect('localhost', 'root', '', 'users') or die("could not connect to the database");
-// $db = mysqli_connect('db5003435648.hosting-data.io', 'dbu1173131', 'NewStartup123', 'dbs2787679') or die("could not connect to the database");     //for online ionos server
 $email = $_SESSION['email'];
 $v_token = $_SESSION['v_token'];
 $query = "SELECT * FROM user WHERE email = '$email'";
@@ -62,13 +60,6 @@ if(isset($_POST['send-verif-email'])) {
 
 	$mail->setFrom('easyfunds112@gmail.com', 'EasyFunds');
 	$mail->addAddress($email, 'User');     // Add a recipient
-	// $mail->addAddress('ellen@example.com');               // Name is optional
-	// $mail->addReplyTo('info@example.com', 'Information');
-	// $mail->addCC('cc@example.com');
-	// $mail->addBCC('bcc@example.com');
-
-	// $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-	// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 	$mail->isHTML(true);                                  // Set email format to HTML
 
 	$mail->Subject = 'Confirm your email';
@@ -95,9 +86,7 @@ if(isset($_POST['send-verif-email'])) {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<title>User Dashboard</title>
-	<!-- <link rel="shortcut icon" href="img/mint-logo-new2.png" type="image/x-icon"> -->
 	<link rel="shortcut icon" href="img/EF8.png" type="image/x-icon">
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/dashboard-style.css">
@@ -106,7 +95,6 @@ if(isset($_POST['send-verif-email'])) {
 	<input type="checkbox" id="nav-toggle">
 	<div class="sidebar">
 		<div class="sidebar-brand">
-			<!-- <h2><span class="las la-recycle"></span><span>MINT</span></h2> -->
 			<h2><span><img src="img/EF9.png"></span><span>EasyFunds</span></h2>
 		</div>
 
@@ -120,9 +108,6 @@ if(isset($_POST['send-verif-email'])) {
 
 				<li><a href="edit-profile.php"><span class="las la-user-circle"></span><span>Account</span></a>
 				</li>
-
-				<!-- <li><a href="#"><span class="las la-cog"></span><span>Settings</span></a>
-				</li> -->
 			</ul>
 			<button onclick="location.href='logout.php'" type="button" class="logout-btn"><span class="las la-sign-out-alt"></span><span>Logout</span></button>
 		</div>
@@ -185,7 +170,7 @@ if(isset($_POST['send-verif-email'])) {
 
 				<div class="cards-single">
 					<?php 
-					$now = time(); // or your date as well
+					$now = time();
 					$join_date = strtotime($_SESSION['datejoined']);
 					$datediff = $now - $join_date;
 					$dsj = round($datediff / (60 * 60 * 24));
@@ -259,16 +244,10 @@ if(isset($_POST['send-verif-email'])) {
 														<td><span class='status pink'></span>Declined</td>
 													  </tr>");
 												}
-												// echo ("<tr>
-												// 		<td>".$hist_row['amount']."</td>
-												// 		<td>".$prog_name_row['program_name']."</td>
-												// 		<td><span class='status purple'></span>".$hist_row['status']."</td>
-												// 	  </tr>");
 											}
 										}
 										else
 										{
-											// echo("No Donations Found");
 											echo ("<tr>
 														<td>No</td>
 														<td>Donations</td>
@@ -292,10 +271,6 @@ if(isset($_POST['send-verif-email'])) {
 						</div>
 						<div class="card-body">
 							<div class="customer">
-
-								<!-- temp class for now -->
-								
-								<!-- _____________ -->
 
 								<div class="info">
 									<img src="img/picture-not-present.jpg" width="70px" height="70px" alt="image of the user">	

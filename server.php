@@ -3,9 +3,6 @@
 
 session_start();
 require 'connection.php';
-
-//initializing variables
-
 $username = "";
 $email = "";
 $phone = "";
@@ -17,12 +14,6 @@ $errors = array();    //errors array for registration module
 $errors_login = array();   //errors array for login module
 
 
-//connect to the database
-
-// $db = mysqli_connect('localhost', 'root', '', 'users') or die("could not connect to the database");
-
-// $db = mysqli_connect('db5003435648.hosting-data.io', 'dbu1173131', 'NewStartup123', 'dbs2787679') or die("could not connect to the database");     //for online ionos server
-
 //for the email delivery
 require ('PHPMailer/PHPMailerAutoload.php');
 
@@ -31,24 +22,18 @@ require ('PHPMailer/PHPMailerAutoload.php');
 if (isset($_POST['reg_user']))
 {
 
-	// $username = mysqli_real_escape_string($db, $_POST['username']);
 	$fname = mysqli_real_escape_string($db, $_POST['fname']);
 	$email = mysqli_real_escape_string($db, $_POST['email']);
 	$password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
 	$password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 	$address = mysqli_real_escape_string($db, $_POST['address']);
 	$phone = mysqli_real_escape_string($db, $_POST['phone']);
-	// $r_points = 0;
-	// $bottles = 0;
-	// $vouchers = 0;
 	$v_token = md5(time().$email);
 	$verify = 0;
 	$datej = date('Y-m-d');
 
 
 	//form validation
-
-	// if (empty($username)) {array_push($errors, "Username is required.");}
 	if (empty($email)) {array_push($errors, "Email is required.");}
 	if (empty($password_1)) {array_push($errors, "Password is required.");}
 	if (empty($address)) {array_push($errors, "Address is required.");}
@@ -57,9 +42,7 @@ if (isset($_POST['reg_user']))
 	//checking if the passwords enter in both fields same
 	if($password_1 != $password_2) {array_push($errors, "Passwords do not match.");}
 
-	//checking database if username or email entered is already present
 
-	// $user_check_query = "SELECT * FROM user WHERE username = '$username' OR email = '$email' LIMIT 1";
 	$user_check_query = "SELECT * FROM user WHERE email = '$email' LIMIT 1";
 
 	$results = mysqli_query($db, $user_check_query);
@@ -68,7 +51,6 @@ if (isset($_POST['reg_user']))
 
 	if($user)
 	{
-		// if ($user['username'] === $username){array_push($errors, "Username already exists.");}
 		if ($user['email'] === $email){array_push($errors, "This email id already exists.");}
 
 	}
@@ -80,7 +62,6 @@ if (isset($_POST['reg_user']))
 		$password = password_hash($password_1, PASSWORD_DEFAULT);  //encrypting the password
 		$query = "INSERT INTO user (fname, email, password, phone, address, vtoken, verify) VALUES ('$fname', '$email', '$password', '$phone', '$address', '$v_token', '$verify')";
 		mysqli_query($db, $query);
-		// $_SESSION['username'] = $username;
 		$_SESSION['email'] = $email;
       	$_SESSION['v_token'] = $v_token;
 		$query = "SELECT * FROM user WHERE email = '$email'";
@@ -104,13 +85,7 @@ if (isset($_POST['reg_user']))
 
 			$mail->setFrom('easyfunds112@gmail.com', 'EasyFunds');
 			$mail->addAddress($email, 'User');     // Add a recipient
-			// $mail->addAddress('ellen@example.com');               // Name is optional
-			// $mail->addReplyTo('info@example.com', 'Information');
-			// $mail->addCC('cc@example.com');
-			// $mail->addBCC('bcc@example.com');
-
-			// $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-			// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+			
 			$mail->isHTML(true);                                  // Set email format to HTML
 
 			$mail->Subject = 'Confirm your email';
@@ -144,13 +119,6 @@ if (isset($_POST['reg_user']))
 
 			$mail2->setFrom('easyfunds112@gmail.com', 'EasyFunds');
 			$mail2->addAddress($email, 'User');     // Add a recipient
-			// $mail->addAddress('ellen@example.com');               // Name is optional
-			// $mail->addReplyTo('info@example.com', 'Information');
-			// $mail->addCC('cc@example.com');
-			// $mail->addBCC('bcc@example.com');
-
-			// $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-			// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 			$mail2->isHTML(true);                                  // Set email format to HTML
 
 			$mail2->Subject = 'Welcome to EasyFunds!';
@@ -170,15 +138,9 @@ if (isset($_POST['reg_user']))
 
 
 		$user_data_row = mysqli_fetch_assoc($results);
-
-		// $_SESSION['verify'] = $user_data_row['verify'];
-		// $_SESSION['email'] = $user_data_row['email'];
 		$_SESSION['fname'] = $user_data_row['fname'];
 		$_SESSION['phone'] = $user_data_row['phone'];
 		$_SESSION['address'] = $user_data_row['address'];
-		// $_SESSION['r_points'] = $user_data_row['rpoints'];
-		// $_SESSION['bottles'] = $user_data_row['bottles'];
-		// $_SESSION['vouchers'] = $user_data_row['vouchers'];
 		$_SESSION['datejoined'] = $user_data_row['datejoined'];
 		$_SESSION['success'] = "You are now logged in";
 
@@ -204,13 +166,10 @@ if (isset($_POST['login_user']))
 
 	if(count($errors_login) == 0)
 	{
-		// $password = password_hash($password, PASSWORD_DEFAULT);  //encrypting the password
 		$query = "SELECT * FROM user WHERE email = '$email'";
 
 		$results = mysqli_query($db, $query);
 		$user_data_row = mysqli_fetch_assoc($results);
-		// print($temp['password']);
-
 		if(!$user_data_row)
 		{
 			array_push($errors_login, "This email does not exist.");
@@ -219,16 +178,10 @@ if (isset($_POST['login_user']))
 		{
 			if(password_verify($password, $user_data_row['password']))
 			{
-				// $_SESSION['username'] = $username;
-				// $_SESSION['email'] = $user_data_row['email'];
-				// $_SESSION['verify'] = $user_data_row['verify'];
 				$_SESSION['fname'] = $user_data_row['fname'];
 				$_SESSION['email'] = $email;
 				$_SESSION['phone'] = $user_data_row['phone'];
 				$_SESSION['address'] = $user_data_row['address'];
-				// $_SESSION['r_points'] = $user_data_row['rpoints'];
-				// $_SESSION['bottles'] = $user_data_row['bottles'];
-				// $_SESSION['vouchers'] = $user_data_row['vouchers'];
 				$_SESSION['datejoined'] = $user_data_row['datejoined'];
 				$_SESSION['v_token'] = $user_data_row['vtoken'];
 				$_SESSION['success'] = "Logged in successfully";

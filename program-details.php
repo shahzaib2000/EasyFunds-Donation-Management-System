@@ -24,13 +24,9 @@ if (isset($_GET['prog_id']))
 	$fetch_pdet_row = mysqli_fetch_assoc($result_fetch_pdet);
 	$prog_name_don = $fetch_pdet_row['program_name'];
 	$org_name_don = $fetch_pdet_row['org_name'];
-	// echo ($fetch_pdet_row['prog_details']);
 }
 
-// $amount_donated = 0;
 $user_id = $user_data_row['id'];
-
-// $donation_success = 0;
 
 $program_id = $_SESSION['prog_id'];
 
@@ -42,19 +38,16 @@ $program_id = $_SESSION['prog_id'];
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<title><?php echo($prog_name_don); ?></title>
 	<link rel="shortcut icon" href="img/EF8.png" type="image/x-icon">
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/dashboard-style.css">
 	<link rel="stylesheet" type="text/css" href="css/program-details.css">
-	<!-- <link rel="stylesheet" type="text/css" href="css/profile-edit.css"> -->
 </head>
 <body>
 	<input type="checkbox" id="nav-toggle">
 	<div class="sidebar">
 		<div class="sidebar-brand">
-			<!-- <h2><span class="las la-recycle"></span><span>MINT</span></h2> -->
 			<h2><span><img src="img/EF9.png"></span><span>EasyFunds</span></h2>
 		</div>
 
@@ -68,9 +61,6 @@ $program_id = $_SESSION['prog_id'];
 
 				<li><a href="edit-profile.php"><span class="las la-user-circle"></span><span>Account</span></a>
 				</li>
-
-				<!-- <li><a href="#"><span class="las la-cog"></span><span>Settings</span></a>
-				</li> -->
 			</ul>
 			<button onclick="location.href='logout.php'" type="button" class="logout-btn"><span class="las la-sign-out-alt"></span><span>Logout</span></button>
 		</div>
@@ -84,11 +74,6 @@ $program_id = $_SESSION['prog_id'];
 				</label>
 				Program Details
 			</h2>
-
-			<!-- <div class="search-wrapper">
-				<span class="las la-search"></span>
-				<input type="search" placeholder="Search here"/>
-			</div> -->
 
 			<div class="user-wrapper">
 				<img src="img/picture-not-present.jpg" width="40px" height="40px" alt="">
