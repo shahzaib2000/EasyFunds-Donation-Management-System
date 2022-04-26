@@ -63,7 +63,7 @@ if(isset($_POST['send-verif-email'])) {
 	$mail->isHTML(true);                                  // Set email format to HTML
 
 	$mail->Subject = 'Confirm your email';
-	$mail->Body    = '<p>Hi User,<br>We are happy that you signed up for EasyFunds. Your choice to make this world a better place by donating to our programs is praiseworthy. To start using the EasyFunds platform, please confirm your email address. Click the link below to verify:</p> <p><a href="http://localhost/se-project/verify.php?token='.$v_token.'"> Link for verification </a><br></p> <p>Welcome to EasyFunds, <br>The EasyFunds Team';
+	$mail->Body    = '<p>Hi User,<br>We are happy that you signed up for EasyFunds. Your choice to make this world a better place by donating to our programs is praiseworthy. To start using the EasyFunds platform, please confirm your email address. Click the link below to verify:</p> <p><a href="http://localhost/se-project5/verify.php?token='.$v_token.'"> Link for verification </a><br></p> <p>Welcome to EasyFunds, <br>The EasyFunds Team';
 
 	// $mail->Body    = '<p>Hi User,<br>We are happy that you signed up for EasyFunds. Your choice to make this world a better place by donating to our programs is praiseworthy. To start using the EasyFunds platform, please confirm your email address. Click the link below to verify:</p> <p><a href="http://easyfunds.atwebpages.com/verify.php?token='.$v_token.'"> Link for verification </a><br></p> <p>Welcome to EasyFunds, <br>The EasyFunds Team';
 	
