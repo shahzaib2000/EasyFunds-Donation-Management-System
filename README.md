@@ -20,10 +20,11 @@ The web-app is completely responsive, compatible to all screen sizes. The UI is 
 
 A live version of this Web-App (with limited functionality, due to php compatibility issues on the free server) can be accessed from here: http://easyfunds.atwebpages.com/
 
-## Project Team Name: Deck of Aces
+## Project Team Name:
+Deck of Aces
 
 ## Team Members:
-Muhammad Saad
-Shahzaib Amir
-Wasiq Hussain
-Danish Hasan
+* Muhammad Saad
+* Shahzaib Amir
+* Wasiq Hussain
+* Danish Hasan
