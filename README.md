@@ -27,4 +27,4 @@ Deck of Aces
 * Muhammad Saad
 * Shahzaib Amir
 * Wasiq Hussain
-* Danish Hasan
+* Syed Danish Hassan
