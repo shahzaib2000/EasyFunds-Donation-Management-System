@@ -26,5 +26,4 @@ Deck of Aces
 ## Team Members:
 * Muhammad Saad
 * Shahzaib Amir
-* Wasiq Hussain
-* Syed Danish Hassan
+
